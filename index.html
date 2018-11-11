@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+       <link rel="stylesheet" href="style.css">
+       <img rel="image.html">
+       <img rel= "https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiakpuJyMveAhWm34MKHdy1BkwQjRx6BAgBEAU&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fhangman&psig=AOvVaw1xkBp6-NDOqOrNzJerN5Wx&ust=1541999005163074">;
+      
+  <h1>Press Any Key to Get Started</h1>;
+        
+  </head>
+  
+
+   <body onload="startUp()">
+    <h2>Hangman!</h2>
+        
+       <input id="letter" type="text">
+       <input type ="button"  value="letter" onClick="letter()"/>
+       <p id="answer"></p>
+       <p id="counter"></p>
+       <p id="stat"></p>  
+
+<script>
+  var randomWordArr = ["hotel california", "eagles"];
+  var randomWord = randomWordArr[Math.floor(Math.random() * randomWordArr.length)];
+  var s;
+  var count = 0;
+  var answerArray = [];
+ 
+function startUp()
+{
+  for (var i = 0; i < randomWord.length; i++)
+{
+answerArray[i] = "_ ";
+}
+s = answerArray.join(" ");
+document.getElementById("answer").innerHTML = s;
+}
+    function letter()
+{
+      var letter = document.getElementById("letter").value;
+
+        if (letter.length > 0)
+{
+        for (var i = 0; 1 < randomWord.length; i++)
+        {
+          //if the randomword contains a letter that the user typed
+            if (randomWord[i] === letter)
+            {
+                answerArray[i] = letter;
+            }
+
+        }
+        //how many guesses
+  count ++;
+  document.getElementById("counter").innerHTML= "Number of clicks: " + count;
+  document.getElementById("answer").innerHTML= answerArray.join(" ");
+}
+  
+
+      if(count>15)
+      {
+        document.getElementById("stat").innerHTML = "Come on - you should know this!";
+      }
+}
+  
+//somehow the counter doesn't work, but did at one time. I also didn't get the words to show up on the display.      
+</script> 
+
+</body>  
+
+</html>
+
+      
+      
+          
+
+
+
+      
+
+  
+   
