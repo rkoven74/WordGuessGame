@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-us">
+ 
+  <head>
+    <meta charset="UTF-8">
+    <title>Hangman</title>
+               
+  </head>
+  
+  <body>
+<div>
+  <h1>H A N G M A N!!!!<h1>
+ <img src="Hangman Image.jpeg" alt="Hangman">
+  <h2><strong>Guess a Band from the 70s</strong></h2>
+  <h3>Press Any Key to Get Started!</h3>
+  <input id="Letter" type="text">
+  <!-- <button onclick="Text()">Letter</button> -->
+</div>
+<div><p id="word-display"></p></div>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style1.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+
+ <script type="text/javascript">
+$(document).ready(function() {
+
+var wordBank = ['Eagles'];
+var chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+var chosenWordArray = chosenWord.split('');
+var underScoreArray = displayBlankLetters(chosenWord);
+updateUnderscores(underScoreArray);
+function displayBlankLetters(word) {
+  var tempUnderscoreArray = [];
+  for(var i = 0; i < word.length; i++) {
+    tempUnderscoreArray.push('_');
+  }
+  return tempUnderscoreArray;
+}
+function updateUnderscores(underscoreArray) {
+  $('#word-display').text(underscoreArray.join('  '));
+}
+//We need a list of words - check
+//We need to randomly choose a word form list - check
+//Then we need a word array of that individual word - check
+//we need a matching array of underscores which we can populate as the user guesses - check
+
+
+//We need ways to update the DOM - letters chosen, enptying out the input when user input is processed
+//We need a way to reset the game
+var validInput = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p', 'q','r','s','t','u','v','w','x','y','z'];
+
+
+document.onkeyup = function(event) {
+  if(event.srcElement.id === 'Letter' && validInput.indexOf(event.key) > -1) {
+var userGuess = event.key.toLowerCase();
+        console.log(userGuess);
+  for(var i = 0; i < chosenWordArray.length; i++) {
+    if(chosenWordArray[i].toLowerCase() === userGuess) {
+      //this means we had a match
+      underScoreArray[i] = chosenWordArray[i];
+      updateUnderscores(underScoreArray);
+    }
+    else {
+      //this means we failed, we need to add to letters guess and descrease turns
+    } 
+  }
+  }
+  else if(event.key === 'Backspace'){
+    return;
+  }
+  else {
+    alert('invalid input');
+  }
+
+}
+        
+       
+for (var i = 0; i < letters.length; i++) {
+        
+}
+});
+   
+</script>
+</body>  
+
+</html>
